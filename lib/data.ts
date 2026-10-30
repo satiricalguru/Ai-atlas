@@ -5,15 +5,15 @@ export type ProviderId = typeof providerIds[number];
 export const categories = ['Coding', 'Debugging', 'Research', 'Studying', 'Writing', 'Brainstorming', 'Content Creation', 'Data Analysis', 'Business Planning', 'General Assistance'] as const;
 export type Category = typeof categories[number];
 export const providers: { id: ProviderId; name: string; company: string; color: string; mark: string; description: string; method: string; url: string; live?: boolean }[] = [
-  { id: 'chatgpt', name: 'ChatGPT', company: 'OpenAI', color: '#9ac5ae', mark: '◎', description: 'Your thinking partner, across every kind of work.', method: 'JSON export · OpenAI API', url: 'https://chatgpt.com', live: true },
-  { id: 'claude', name: 'Claude', company: 'Anthropic', color: '#e4a387', mark: '✳', description: 'From thoughtful writing to complex code.', method: 'JSON export · Anthropic API', url: 'https://claude.ai', live: true },
-  { id: 'gemini', name: 'Gemini', company: 'Google', color: '#9baeee', mark: '✦', description: 'Research, create, and explore new perspectives.', method: 'CSV / JSON import', url: 'https://gemini.google.com' },
-  { id: 'cursor', name: 'Cursor', company: 'Anysphere', color: '#c9d0c5', mark: '◈', description: 'Your AI-powered development environment.', method: 'CSV / JSON import', url: 'https://cursor.com' },
-  { id: 'copilot', name: 'GitHub Copilot', company: 'GitHub', color: '#c1ace5', mark: '⌘', description: 'A little extra intelligence in your editor.', method: 'CSV / JSON import', url: 'https://github.com/features/copilot' },
-  { id: 'perplexity', name: 'Perplexity', company: 'Perplexity AI', color: '#8bc8ca', mark: '⌇', description: 'Follow your curiosity. Find the sources.', method: 'CSV / JSON import', url: 'https://perplexity.ai' },
-  { id: 'other', name: 'Other tools', company: 'Your ecosystem', color: '#bac39d', mark: '+', description: 'Make room for the next tool in your workflow.', method: 'CSV / JSON import', url: '' },
+  { id: 'chatgpt', name: 'ChatGPT', company: 'OpenAI', color: '#bababa', mark: '◎', description: 'Your thinking partner, across every kind of work.', method: 'JSON export · OpenAI API', url: 'https://chatgpt.com', live: true },
+  { id: 'claude', name: 'Claude', company: 'Anthropic', color: '#afafaf', mark: '✳', description: 'From thoughtful writing to complex code.', method: 'JSON export · Anthropic API', url: 'https://claude.ai', live: true },
+  { id: 'gemini', name: 'Gemini', company: 'Google', color: '#afafaf', mark: '✦', description: 'Research, create, and explore new perspectives.', method: 'CSV / JSON import', url: 'https://gemini.google.com' },
+  { id: 'cursor', name: 'Cursor', company: 'Anysphere', color: '#cecece', mark: '◈', description: 'Your AI-powered development environment.', method: 'CSV / JSON import', url: 'https://cursor.com' },
+  { id: 'copilot', name: 'GitHub Copilot', company: 'GitHub', color: '#b5b5b5', mark: '⌘', description: 'A little extra intelligence in your editor.', method: 'CSV / JSON import', url: 'https://github.com/features/copilot' },
+  { id: 'perplexity', name: 'Perplexity', company: 'Perplexity AI', color: '#bbbbbb', mark: '⌇', description: 'Follow your curiosity. Find the sources.', method: 'CSV / JSON import', url: 'https://perplexity.ai' },
+  { id: 'other', name: 'Other tools', company: 'Your ecosystem', color: '#bebebe', mark: '+', description: 'Make room for the next tool in your workflow.', method: 'CSV / JSON import', url: '' },
 ];
-export const categoryColors = ['#d5fa6b','#b0c29a','#a6b8ed','#d6c0e5','#e4b699','#a4d2c6','#dda5b6','#8db6c6','#b8b49a','#889283'];
+export const categoryColors = ['#f5f5f5','#999999','#666666','#cccccc','#818181','#dddddd','#ababab','#555555','#bbbbbb','#444444'];
 export const eventSchema = z.object({
   external_id: z.string().min(1).max(160).optional(),
   provider: z.enum(providerIds), timestamp: z.string().datetime({ offset: true }),

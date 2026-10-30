@@ -2,7 +2,7 @@
 
 **Your entire AI universe. One place.**
 
-A working, extensible AI activity intelligence application: procedural WebGL landing experience, explorable analytics, privacy-preserving imports, and an authenticated Supabase backend. All sample information is explicitly labelled. External services are optional for the demo and local workspace; live account functionality requires configuration.
+A working, extensible AI activity intelligence application: procedural silver WebGL landing experience, explorable analytics, privacy-preserving imports, and an authenticated Supabase backend. All sample information is explicitly labelled. External services are optional for the demo and local workspace; live account functionality requires configuration.
 
 ## Run locally
 
@@ -26,7 +26,7 @@ npx next start
 
 ## What is built
 
-- Original atlas/orbit logo, wordmark, favicon, self-hosted licensed DM Sans / DM Mono, coherent dark/lime design system.
+- Original atlas/orbit logo, wordmark, favicon, self-hosted licensed DM Sans / DM Mono, coherent black-and-white design system.
 - Procedural Three.js/R3F/drei point sphere, wire geometry and orbital lines; GLSL point material; provider interactions; dynamic scene loading; mobile DPR/particle reductions; visibility pause; reduced-motion and SVG fallback.
 - Full landing narrative, interactive dashboard preview, ecosystem, onboarding explanation, fingerprint, privacy, FAQ and final CTA.
 - Email sign-up/sign-in, GitHub OAuth, PKCE callback, email recovery, password reset, server-protected account pages, session refresh proxy and local/global sign-out using Supabase Auth. These are real implementations, not simulated logins. Without service configuration, the UI states that accounts are unavailable.
