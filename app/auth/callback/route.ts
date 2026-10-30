@@ -1,0 +1,2 @@
+import {serverClient} from '@/lib/supabase/server';
+export async function GET(request:Request){const url=new URL(request.url);const code=url.searchParams.get('code');if(code){try{const db=await serverClient();const {error}=await db.auth.exchangeCodeForSession(code);if(!error)return Response.redirect(new URL(url.searchParams.get('type')==='recovery'?'/reset-password':'/onboarding',url.origin),303);}catch{/* Configuration error redirects to visible auth feedback. */}}return Response.redirect(new URL('/sign-in?error=callback',url.origin),303);}

@@ -1,0 +1,19 @@
+import {describe,it,expect,vi,afterEach} from 'vitest';
+import {openai,anthropic} from '../../lib/providers';
+import {encryptSecret,decryptSecret} from '../../lib/crypto';
+import {sameOrigin,boundedBody} from '../../lib/http';
+const start=new Date('2026-10-01T00:00:00Z'),end=new Date('2026-10-30T00:00:00Z');
+afterEach(()=>{vi.unstubAllGlobals();vi.unstubAllEnvs();});
+describe('Official adapter boundaries',()=>{
+ it('uses official fixed origin, admin header, model groups and pagination',async()=>{const fetcher=vi.fn().mockResolvedValue(Response.json({data:[{start_time:1790812800,results:[{model:'test-model',input_tokens:20,output_tokens:12,num_model_requests:3}]}],has_more:true,next_page:'cursor-2'}));vi.stubGlobal('fetch',fetcher);const result=await openai.fetchPage('secret',start,end,'cursor-1');const [url,options]=fetcher.mock.calls[0];expect(url.origin).toBe('https://api.openai.com');expect(url.searchParams.get('page')).toBe('cursor-1');expect(options.headers.Authorization).toBe('Bearer secret');expect(result.cursor).toBe('cursor-2');expect(result.snapshots[0]).toMatchObject({requests:3,cost:null,source:'official-api'});});
+ it('does not turn Anthropic aggregate tokens into conversation counts',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({data:[{starting_at:start.toISOString(),results:[{model:'claude',uncached_input_tokens:10,output_tokens:3}]}],has_more:false})));const result=await anthropic.fetchPage('secret',start,end);expect(result.snapshots[0]).toMatchObject({requests:null,cost:null,input_tokens:10});});
+ it('retains missing provider fields as null',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({data:[{start_time:1790812800,results:[{}]}]})));const result=await openai.fetchPage('secret',start,end);expect(result.snapshots[0].input_tokens).toBeNull();});
+ it('honors retry-after without leaking a response body',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('private credential',{status:429,headers:{'retry-after':'120'}})));await expect(openai.fetchPage('secret',start,end)).rejects.toMatchObject({retryAfter:120,message:'Provider rate limit reached.'});});
+ it('rejects unauthorized or changed schemas',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('private key',{status:403})));await expect(openai.fetchPage('secret',start,end)).rejects.toThrow('admin access');vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({unexpected:true})));await expect(openai.fetchPage('secret',start,end)).rejects.toThrow('No usage was recorded');});
+});
+describe('Credential storage and request security',()=>{
+ it('encrypts with random nonces, roundtrips and detects tampering',async()=>{vi.stubEnv('INTEGRATION_ENCRYPTION_KEY','a'.repeat(64));const a=await encryptSecret('sensitive-api-key'),b=await encryptSecret('sensitive-api-key');expect(a.iv).not.toEqual(b.iv);expect(JSON.stringify(a)).not.toContain('sensitive');expect(await decryptSecret(a)).toBe('sensitive-api-key');a.cipher[0]^=1;await expect(decryptSecret(a)).rejects.toThrow();});
+ it('fails closed without encryption configuration',async()=>{vi.stubEnv('INTEGRATION_ENCRYPTION_KEY','');await expect(encryptSecret('secret')).rejects.toThrow('32-byte');});
+ it('rejects forged and absent origins on mutations',()=>{expect(()=>sameOrigin(new Request('https://atlas.test/api/import',{headers:{Origin:'https://attacker.test'}}))).toThrow('Cross-origin');expect(()=>sameOrigin(new Request('https://atlas.test/api/import'))).toThrow();expect(()=>sameOrigin(new Request('https://atlas.test/api/import',{headers:{Origin:'https://atlas.test'}}))).not.toThrow();});
+ it('bounds streamed bodies, even without content-length',async()=>{const req=new Request('https://atlas.test/api/import',{method:'POST',body:JSON.stringify({x:'a'.repeat(500)})});await expect(boundedBody(req,100)).rejects.toThrow('size limit');});
+});

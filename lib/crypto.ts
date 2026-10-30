@@ -1,0 +1,4 @@
+function keyBytes(){const raw=process.env.INTEGRATION_ENCRYPTION_KEY;if(!raw||!/^[a-fA-F0-9]{64}$/.test(raw))throw new Error('A 32-byte encryption key is required.');return Uint8Array.from(raw.match(/../g)!,h=>parseInt(h,16));}
+async function key(){return crypto.subtle.importKey('raw',keyBytes(),'AES-GCM',false,['encrypt','decrypt']);}
+export async function encryptSecret(secret:string){const iv=crypto.getRandomValues(new Uint8Array(12));const cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},await key(),new TextEncoder().encode(secret));return {iv:Array.from(iv),cipher:Array.from(new Uint8Array(cipher))};}
+export async function decryptSecret(value:{iv:number[];cipher:number[]}){const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(value.iv)},await key(),new Uint8Array(value.cipher));return new TextDecoder().decode(clear);}

@@ -1,0 +1,4 @@
+import {authorized,boundedBody,failure,json,HttpError,rateLimit} from '@/lib/http';
+import {categories} from '@/lib/data';
+import {z} from 'zod';
+export async function PATCH(request:Request,{params}:{params:Promise<{id:string}>}){try{const {db,user}=await authorized(request,true);await rateLimit(db,'classification',60);const {id}=await params;if(!z.string().uuid().safeParse(id).success)throw new HttpError(400,'Invalid activity ID.');const body=z.object({category:z.enum(categories)}).strict().parse(await boundedBody(request,1024));const {data,error}=await db.from('activity_events').update({category:body.category,confidence:1,classification_source:'user',classified_at:new Date().toISOString()}).eq('id',id).eq('user_id',user.id).select('id');if(error)throw error;if(!data.length)throw new HttpError(404,'Activity not found.');return json({ok:true});}catch(e){if(e instanceof z.ZodError)return json({error:'Choose a valid work category.'},400);return failure(e);}}
