@@ -49,7 +49,7 @@ export async function normalizeRows(rows: unknown[], source: ActivityEvent['sour
   }
   return [...new Map(normalized.map(e=>[`${e.provider}:${e.source}:${e.external_id}`,e])).values()];
 }
-export async function parseImport(text: string, name: string) {
+export async function parseImport(text: string, name: string, allowMetadataClassification = true) {
   if(new TextEncoder().encode(text).byteLength>MAX_IMPORT_BYTES)throw new Error('File exceeds the 5 MB limit.');
   if(name.toLowerCase().endsWith('.csv'))return normalizeRows(parseCSV(text),'csv');
   if(!name.toLowerCase().endsWith('.json'))throw new Error('Choose a .csv or .json file.');
@@ -62,11 +62,11 @@ export async function parseImport(text: string, name: string) {
       const at=Number(c.create_time);if(!Number.isFinite(at)||at<=0)throw new Error(`Conversation ${i+1} is missing a creation timestamp.`);
       const map=c.mapping as Record<string,{message?:{metadata?:{model_slug?:string}}}>|undefined;
       const model=map?Object.values(map).map(n=>n.message?.metadata?.model_slug).find(Boolean):null;
-      return {external_id:String(c.id||c.conversation_id||''),provider:'chatgpt',timestamp:new Date(at*1000).toISOString(),model:model||null,...classifyMetadata(String(c.title||''))};
+      return {external_id:String(c.id||c.conversation_id||''),provider:'chatgpt',timestamp:new Date(at*1000).toISOString(),model:model||null,...(allowMetadataClassification?classifyMetadata(String(c.title||'')):{category:'General Assistance',confidence:0,classification_source:'unclassified'})};
     });return normalizeRows(mapped,'chatgpt-export');
   }
   if(rows.length&&rows[0]&&typeof rows[0]==='object'&&'chat_messages' in rows[0]){
-    return normalizeRows(rows.map((c:Record<string,unknown>)=>({external_id:String(c.uuid||''),provider:'claude',timestamp:c.created_at,model:null,...classifyMetadata(String(c.name||''))})),'claude-export');
+    return normalizeRows(rows.map((c:Record<string,unknown>)=>({external_id:String(c.uuid||''),provider:'claude',timestamp:c.created_at,model:null,...(allowMetadataClassification?classifyMetadata(String(c.name||'')):{category:'General Assistance',confidence:0,classification_source:'unclassified'})})),'claude-export');
   }
   return normalizeRows(rows,'json');
 }

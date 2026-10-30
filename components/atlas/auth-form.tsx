@@ -14,7 +14,7 @@ export function AuthForm({mode}:{mode:Mode}){
  const [error,setError]=useState('');const [success,setSuccess]=useState('');const [busy,setBusy]=useState(false);const [show,setShow]=useState(false);
  const isRecovery=mode==='recover',isReset=mode==='reset-password',isSignUp=mode==='sign-up';
  const activeSchema=z.object({email:isReset?z.string().optional():schema.shape.email,password:isRecovery?z.string().optional():schema.shape.password});
- const {register,handleSubmit,formState:{errors}}=useForm<{email?:string;password?:string}>({resolver:zodResolver(activeSchema)});
+ const {register,handleSubmit,formState:{errors}}=useForm<z.infer<typeof activeSchema>>({resolver:zodResolver(activeSchema)});
  const submit=handleSubmit(async(values)=>{setError('');setSuccess('');setBusy(true);try{const db=browserClient();const origin=window.location.origin;
  if(isRecovery){const {error}=await db.auth.resetPasswordForEmail(values.email!,{redirectTo:`${origin}/auth/callback?type=recovery`});if(error)throw error;setSuccess('If an account exists for that address, a recovery link is on its way.');}
  else if(isReset){const {data}=await db.auth.getUser();if(!data.user)throw new Error('Open the password recovery link in your email first.');const {error}=await db.auth.updateUser({password:values.password});if(error)throw error;setSuccess('Password updated. You can now open your Atlas.');}

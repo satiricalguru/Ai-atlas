@@ -43,7 +43,7 @@ npx next start
 
 Next.js App Router conventions, React 19, strict TypeScript, Tailwind CSS 4, customized UI components and native accessible dialogs; Lucide; Three.js, React Three Fiber 9 and drei 10; Motion; modular ECharts; TanStack Table; React Hook Form and Zod; Supabase Auth/PostgreSQL; WebCrypto AES-GCM; Inngest 4; Vitest/PGlite and Playwright. The starter retains shadcn primitives for future extension. GSAP was deliberately unnecessary for the implemented motion. WebGL 2 is the baseline; WebGPU is not required.
 
-Use package-lock.json for the exact, tested versions. Library compatibility was checked against official documentation and npm peer dependency metadata. The inherited Inngest/OpenTelemetry dependency tree emits peer warnings around OpenTelemetry API versions; builds and tests pass, but production dependency auditing remains required.
+Use package-lock.json for the exact, tested versions. Library compatibility was checked against official documentation and npm peer dependency metadata. The inherited Inngest/OpenTelemetry dependency tree emits peer warnings around OpenTelemetry API versions. Security updates pin Next.js 16.4.3, Zod 4.6.7, Sharp 0.35.5 and patched transitive parsers; Zod’s v3 compatibility export keeps Inngest compatible. Re-run dependency auditing before each production release.
 
 ## Configure authentication and durable storage
 
@@ -90,9 +90,10 @@ npm run build:next
 
 Verified on 30 October 2026:
 
-- **36 unit/integration/security tests passed.** Includes parsing and format errors, missing/zero data, local classification, metadata minimization, stable deduplication, formula-safe CSV, analytics, mocked official adapter requests and 429 handling, encryption/tampering, same-origin checks and streamed body bounds.
+- **37 unit/integration/security tests passed.** Includes parsing and format errors, missing/zero data, local classification, metadata minimization, stable deduplication, formula-safe CSV, analytics, mocked official adapter requests and 429 handling, encryption/tampering, same-origin checks and streamed body bounds.
 - **Executable PostgreSQL migration and two-tenant tests passed** using PGlite: RLS read isolation, forged owner rejection, update/delete exclusion, composite foreign keys, secret/RPC permission denial, correction history, atomic rate limits and tenant-limited purge.
 - **18 Playwright checks passed** across desktop Chromium and mobile Chromium emulation: navigation, all app screens, provider scopes, filters, pagination, corrections, validation, demo/local separation, persistent imports, exports, deletion, onboarding, route protection, responsive overflow checks and reduced motion. Tests wait for network readiness to avoid interacting with pre-hydration server markup. Standard document links avoid a production-only client prefetch defect in the Sites compatibility runtime and re-evaluate account/mode boundaries on each page.
+- Production dependency audit (`npm audit --omit=dev`): **0 known advisories** after patching the inherited dependency pins.
 - TypeScript strict check passed. Both Sites/Vinext and stock Next.js production builds passed.
 - Desktop/mobile screenshots inspected; no browser page errors in screenshot runs. Artifacts are generated locally under ignored `outputs/`.
 
