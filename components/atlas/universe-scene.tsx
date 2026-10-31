@@ -16,7 +16,7 @@ export const orbits=[
 const noise=`vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-.85373472095314*r;}
 float snoise(vec3 v){const vec2 C=vec2(1./6.,1./3.);const vec4 D=vec4(0.,.5,1.,2.);vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);vec4 p=permute(permute(permute(i.z+vec4(0.,i1.z,i2.z,1.))+i.y+vec4(0.,i1.y,i2.y,1.))+i.x+vec4(0.,i1.x,i2.x,1.));float n_=.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.+1.;vec4 s1=floor(b1)*2.+1.;vec4 sh=-step(h,vec4(0.));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;vec4 m=max(.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.);m=m*m;return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}
 float fbm(vec3 p){float a=.5,s=0.;for(int i=0;i<3;i++){s+=a*snoise(p);p*=1.9;a*=.45;}return s;}`;
-const particleVertex=`uniform float uTime;uniform float uSwirl;uniform float uMorph;uniform float uBreath;uniform float uPixelRatio;uniform float uSize;uniform float uOpacity;uniform float uMouseStrength;uniform vec3 uMouse;
+const particleVertex=`uniform float uTime;uniform float uSwirl;uniform float uMorph;uniform float uBreath;uniform float uPixelRatio;uniform float uSize;uniform float uOpacity;uniform float uMouseStrength;uniform float uSpin;uniform vec3 uMouse;
 attribute vec3 aTarget;attribute vec4 aRandom;varying float vAlpha;${noise}
 mat2 rot(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}
 void main(){vec3 p=position;float lat=clamp(p.y,-1.,1.);
@@ -28,7 +28,7 @@ void main(){vec3 p=position;float lat=clamp(p.y,-1.,1.);
  p+=normalize(d+vec3(1e-4))*uMouseStrength*pow(smoothstep(.62,0.,dist),2.)*.3;
  vec3 g=aTarget;float gr=length(g.xz);
  g.xz=rot(uTime*(.05+.07/(gr+.5)))*g.xz;
- g.yz=rot(-1.08)*g.yz;
+ g.yz=rot(-.6)*g.yz;g.xy=rot(.42)*g.xy;g.xz=rot(-uSpin)*g.xz;
  float m=smoothstep(aRandom.z*.45,aRandom.z*.45+.55,uMorph);m=m*m*(3.-2.*m);
  vec3 dir=normalize(p+vec3(1e-4));
  p=mix(p,g,m)+dir*sin(m*3.14159)*(.25+.45*aRandom.y);
@@ -115,7 +115,7 @@ function Globe({compact,progress}:{compact:boolean;progress?:MotionValue<number>
  const stage=useRef<THREE.Group>(null);const spin=useRef<THREE.Group>(null);const points=useRef<THREE.Points>(null);const intro=useRef(0);const mouse=useRef({strength:0,x:0,y:0,z:0});
  const shared=useRef({chipAlpha:0});const chips=useContext(ChipCtx);
  const geometry=useMemo(()=>particleGeometry(compact?11000:26000),[compact]);
- const material=useMemo(()=>new THREE.ShaderMaterial({vertexShader:particleVertex,fragmentShader:particleFragment,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{uTime:{value:0},uSwirl:{value:0},uMorph:{value:0},uBreath:{value:.018},uPixelRatio:{value:1},uSize:{value:compact?22:17},uOpacity:{value:0},uMouseStrength:{value:0},uMouse:{value:new THREE.Vector3(9,9,9)}}}),[compact]);
+ const material=useMemo(()=>new THREE.ShaderMaterial({vertexShader:particleVertex,fragmentShader:particleFragment,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{uTime:{value:0},uSwirl:{value:0},uMorph:{value:0},uBreath:{value:.018},uPixelRatio:{value:1},uSize:{value:compact?22:17},uOpacity:{value:0},uMouseStrength:{value:0},uSpin:{value:0},uMouse:{value:new THREE.Vector3(9,9,9)}}}),[compact]);
  const ctx=useMemo(()=>({chips,shared,stage}),[chips]);
  useFrame(({camera,size,pointer,clock,gl},delta)=>{
   const dt=Math.min(delta,.05);const p=clamp01(progress?.get()??0);const t=clock.elapsedTime;
@@ -124,12 +124,12 @@ function Globe({compact,progress}:{compact:boolean;progress?:MotionValue<number>
   const k=smooth(0,.2,p);const heroY=(.5-(compact?.8:.7))*2*h;const heroR=Math.min(.19*2*h,.36*2*h*aspect);const midR=Math.min(.3*2*h,.33*2*h*aspect);
   const swirl=smooth(.36,.6,p),morph=smooth(.56,.84,p);
   shared.current.chipAlpha=smooth(.04,.12,p)*(1-smooth(.36,.45,p))*e;
-  if(stage.current){stage.current.position.y=THREE.MathUtils.damp(stage.current.position.y,THREE.MathUtils.lerp(heroY,0,k),6,dt);stage.current.scale.setScalar(THREE.MathUtils.damp(stage.current.scale.x,THREE.MathUtils.lerp(heroR,midR,k)*(.82+.18*e)*(1-morph*(compact?.42:.08)),6,dt));
+  if(stage.current){stage.current.position.y=THREE.MathUtils.damp(stage.current.position.y,THREE.MathUtils.lerp(heroY,0,k),6,dt);stage.current.scale.setScalar(THREE.MathUtils.damp(stage.current.scale.x,THREE.MathUtils.lerp(heroR,midR,k)*(.82+.18*e)*(1-morph*(compact?.42:.3)),6,dt));
    stage.current.rotation.x=THREE.MathUtils.damp(stage.current.rotation.x,(-pointer.y*.14+.18)*(1-morph),2.5,dt);stage.current.rotation.z=THREE.MathUtils.damp(stage.current.rotation.z,pointer.x*-.05*(1-morph),2.5,dt);}
   if(spin.current)spin.current.rotation.y+=dt*(.1+swirl*.08)*(1-morph*.85)+pointer.x*dt*.04;
   if(points.current&&spin.current){raycaster.setFromCamera(pointer,camera);inverse.copy(spin.current.matrixWorld).invert();ray.copy(raycaster.ray).applyMatrix4(inverse);
    const onGlobe=ray.intersectSphere(unit,hit)!==null&&morph<.5;const m=mouse.current;if(onGlobe){m.x=hit.x;m.y=hit.y;m.z=hit.z;}m.strength=THREE.MathUtils.damp(m.strength,onGlobe?1:0,5,dt);
-   const u=uniformsOf(points.current);if(u){u.uTime.value=t;u.uSwirl.value=swirl;u.uMorph.value=morph;u.uPixelRatio.value=gl.getPixelRatio();u.uOpacity.value=e*(.58+morph*.14)*(1-smooth(.9,1,p)*.85);u.uMouseStrength.value=m.strength;(u.uMouse.value as THREE.Vector3).set(m.x,m.y,m.z);}}
+   const u=uniformsOf(points.current);if(u){u.uTime.value=t;u.uSwirl.value=swirl;u.uMorph.value=morph;u.uPixelRatio.value=gl.getPixelRatio();u.uOpacity.value=e*(.58+morph*.14)*(1-smooth(.9,1,p)*.85);u.uMouseStrength.value=m.strength;u.uSpin.value=spin.current.rotation.y;(u.uMouse.value as THREE.Vector3).set(m.x,m.y,m.z);}}
   cam.position.z=THREE.MathUtils.damp(cam.position.z,10-morph*1.2,3,dt);
  });
  return <Ctx.Provider value={ctx}><group ref={stage}>

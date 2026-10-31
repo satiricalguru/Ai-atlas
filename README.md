@@ -1,20 +1,147 @@
-# AI Atlas
+<div align="center">
 
-**Your entire AI universe. One place.**
+<a href="https://ai-atlas-lovat.vercel.app">
+  <img src="assets/banner.svg" width="100%" alt="AI Atlas: Your entire AI universe. In perspective.">
+</a>
 
-A working, extensible AI activity intelligence application: procedural silver WebGL landing experience, explorable analytics, privacy-preserving imports, and an authenticated Supabase backend. All sample information is explicitly labelled. External services are optional for the demo and local workspace; live account functionality requires configuration.
+<br/>
+<br/>
 
-## Run locally
+**See how you really use AI, across every tool, without giving away your conversations.**
+
+AI Atlas brings ChatGPT, Claude, Gemini, DeepSeek, Kimi and seven more into one privacy-first dashboard,<br/>
+introduced by a scroll-driven WebGL particle universe.
+
+<br/>
+
+[![Live demo](https://img.shields.io/badge/Live_demo-Open_Atlas-ffffff?style=for-the-badge&logo=vercel&logoColor=black&labelColor=111111)](https://ai-atlas-lovat.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-111111?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![Three.js](https://img.shields.io/badge/Three.js-R3F_9-111111?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-111111?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-111111?style=for-the-badge)](LICENSE)
+
+[**Live demo**](https://ai-atlas-lovat.vercel.app) · [**Demo dashboard**](https://ai-atlas-lovat.vercel.app/dashboard?mode=demo) · [Quick start](#-quick-start) · [Architecture](docs/architecture.md) · [Security](docs/security.md)
+
+<br/>
+
+<img src="assets/demo-globe.gif" width="100%" alt="Scrolling through the AI Atlas hero: a particle sphere gathers twelve AI logos into orbit, twists into a vortex, then settles into a spiral galaxy">
+
+<sub>Real capture of the landing page. Scroll drives the whole sequence: <b>sphere → orbit → vortex → galaxy</b>.</sub>
+
+</div>
+
+<br/>
+
+## ✨ Why AI Atlas
+
+You probably use three or four AI tools a week. Each one has its own history, its own dashboard and no idea the others exist. Atlas gives you **one honest picture**.
+
+- 🪐 **Every tool in one orbit.** ChatGPT, Claude, Gemini, Cursor, GitHub Copilot, Perplexity, DeepSeek, Kimi, Grok, Le Chat, Meta AI and Qwen, side by side with their real logos.
+- 🔒 **Metadata, not messages.** Atlas keeps timestamps, tool, model and category. Your prompts and conversation text are never stored or sent to an outside classifier.
+- 🧭 **Patterns you can act on.** Trends, work categories, your go-to tool and an *AI Fingerprint* that sums up how you work.
+- 🧪 **Honest numbers only.** Demo data is clearly labelled, missing costs stay missing, and Atlas never invents "time saved".
+- ⚡ **Try it in seconds.** The full demo dashboard and a browser-local workspace need no account and no API key.
+
+<br/>
+
+## 🎬 See it in action
+
+<div align="center">
+
+<a href="assets/demo.mp4"><img src="assets/hero.jpg" width="100%" alt="AI Atlas hero: 'Your entire AI universe. In perspective.' above a glowing particle sphere"></a>
+
+<sub>▶ <a href="assets/demo.mp4"><b>Watch the full 36-second walkthrough</b></a> (MP4): landing, globe sequence, provider gallery and dashboard.</sub>
+
+</div>
+
+<!-- To get an inline video player on GitHub: drag assets/demo.mp4 into any issue or PR comment,
+     copy the https://github.com/user-attachments/assets/... URL it gives you, and paste it on its own line here. -->
+
+### The scroll story
+
+<table>
+  <tr>
+    <td width="33%"><img src="assets/globe-orbit.jpg" alt="Chapter one: twelve AI logos orbit the particle globe"></td>
+    <td width="33%"><img src="assets/globe-vortex.jpg" alt="Chapter two: the globe twists into a vortex with rippling bands"></td>
+    <td width="33%"><img src="assets/globe-galaxy.jpg" alt="Chapter three: particles settle into a spiral galaxy"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>01 · In orbit</b><br/><sub>Logos fly into orbit around ~26k GPU particles</sub></td>
+    <td align="center"><b>02 · In motion</b><br/><sub>A noise-driven vortex ripples across the shell</sub></td>
+    <td align="center"><b>03 · In perspective</b><br/><sub>Particles arc into a slowly turning spiral galaxy</sub></td>
+  </tr>
+</table>
+
+### Twelve tools, finally side by side
+
+<div align="center">
+  <img src="assets/demo-gallery.gif" width="100%" alt="A pinned horizontal gallery scrolls through cards for all twelve supported AI tools">
+</div>
+
+### The dashboard
+
+<div align="center">
+  <img src="assets/demo-dashboard.gif" width="100%" alt="The demo dashboard overview with interaction totals, an activity trend and a work-category ring">
+</div>
+
+<br/>
+
+<table>
+  <tr>
+    <td width="50%"><img src="assets/dashboard-overview.jpg" alt="Overview: recorded interactions, active applications, models and spend"></td>
+    <td width="50%"><img src="assets/dashboard-insights.jpg" alt="Insights: the AI Fingerprint radar chart, 'The curious builder'"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Overview</b><br/><sub>Period filters, comparisons, trends and category mix</sub></td>
+    <td align="center"><b>Insights & AI Fingerprint</b><br/><sub>A personal portrait of how you work with AI</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="assets/dashboard-applications.jpg" alt="Applications: each AI tool with its connection method and activity count"></td>
+    <td width="50%"><img src="assets/dashboard-activity.jpg" alt="Activity explorer: searchable, filterable table of recorded activity"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Applications</b><br/><sub>Real status and import method for every tool</sub></td>
+    <td align="center"><b>Activity explorer</b><br/><sub>Search, filter, sort and correct categories</sub></td>
+  </tr>
+</table>
+
+### Built for your phone too
+
+<div align="center">
+  <img src="assets/mobile.jpg" width="80%" alt="Three phone screenshots: the hero globe, logos in orbit, and the spiral galaxy">
+</div>
+
+<br/>
+
+## 🚀 Quick start
+
+**Prerequisites:** Node.js **22.13+** and npm.
 
 ```bash
-cd "/Users/jatin/Projects/AI Atlas/ai-atlas"
+git clone https://github.com/satiricalguru/Ai-atlas.git
+cd Ai-atlas
 npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:5173. Use `/dashboard?mode=demo` for a complete sample workspace or `/dashboard?mode=local` for your own browser-local imports. No account or API key is needed for either. The local workspace persists in this browser profile, not in a server database.
+Open **http://127.0.0.1:5173**, then try:
 
-For the standard Next.js runtime:
+| URL | What you get |
+|:--|:--|
+| `/` | The landing page and particle universe |
+| `/dashboard?mode=demo` | The full dashboard with clearly labelled sample data |
+| `/dashboard?mode=local` | Your own imports, stored only in this browser |
+
+> [!TIP]
+> Neither the demo nor the local workspace needs an account, a database or an API key. Accounts and syncing switch on once you add the Supabase settings described below.
+
+<details>
+<summary><b>Other ways to run it</b></summary>
+
+<br/>
+
+`npm run dev` and `npm run build` use the bundled Vinext runtime, which builds a Cloudflare Worker. `npm run start` previews that build locally. For the standard Next.js runtime (what Vercel uses):
 
 ```bash
 npm run dev:next
@@ -22,92 +149,173 @@ npm run build:next
 npx next start
 ```
 
-`npm run dev` / `npm run build` use the supplied Sites-compatible Vinext runtime and produce a Cloudflare Worker. `npm run start` previews that built Worker locally. Vinext is a beta compatibility layer; both its production build and stock Next.js 16 production build have been verified. The standard Next runtime does not depend on the Sites private access gate.
+</details>
 
-## What is built
+<br/>
 
-- Original atlas/orbit logo, wordmark, favicon, self-hosted licensed DM Sans / DM Mono, coherent black-and-white design system.
-- Procedural Three.js/R3F/drei point sphere, wire geometry and orbital lines; GLSL point material; provider interactions; dynamic scene loading; mobile DPR/particle reductions; visibility pause; reduced-motion and SVG fallback.
-- Full landing narrative, interactive dashboard preview, ecosystem, onboarding explanation, fingerprint, privacy, FAQ and final CTA.
-- Email sign-up/sign-in, GitHub OAuth, PKCE callback, email recovery, password reset, server-protected account pages, session refresh proxy and local/global sign-out using Supabase Auth. These are real implementations, not simulated logins. Without service configuration, the UI states that accounts are unavailable.
-- Four-step onboarding with provider choices, explicit connection/import methods and local classification consent.
-- Overview with period/custom-range filtering, previous-period comparison, provider ranking, category distribution, trends, recent activity and separately labelled API snapshots.
-- Applications with actual status, import methods, verified OpenAI/Anthropic organization API credential workflows, encrypted credential storage, queue/retry and disconnect.
-- Activity explorer with search, date/provider/model/category filters, sorting, pagination, metadata details and correction history.
-- Derived insights, AI Fingerprint and aggregate JSON export, interactive provider/category network, cost coverage and spending views.
-- Profile, metadata classification preference, data export, activity/connection purge, session controls and account deletion.
-- Bounded, schema-validated CSV/JSON imports; ChatGPT and Claude conversation-export metadata adapters; stable IDs and deduplication. Prompts and conversation bodies are not stored.
-- Supabase PostgreSQL migration with tenant RLS, ownership constraints, atomic rate limits and inaccessible integration secrets. Inngest durable sync plus a daily 03:00 UTC sweep.
+## 📥 Bring your data
 
-## Technology
+| Source | How it gets in |
+|:--|:--|
+| **ChatGPT** | Upload `conversations.json` from your data export, or connect an OpenAI organization admin key |
+| **Claude** | Upload your conversation export JSON, or connect an Anthropic organization admin key |
+| **Every other tool** | Import normalized CSV or JSON (example below) |
 
-Next.js App Router conventions, React 19, strict TypeScript, Tailwind CSS 4, customized UI components and native accessible dialogs; Lucide; Three.js, React Three Fiber 9 and drei 10; Motion; modular ECharts; TanStack Table; React Hook Form and Zod; Supabase Auth/PostgreSQL; WebCrypto AES-GCM; Inngest 4; Vitest/PGlite and Playwright. The starter retains shadcn primitives for future extension. GSAP was deliberately unnecessary for the implemented motion. WebGL 2 is the baseline; WebGPU is not required.
-
-Use package-lock.json for the exact, tested versions. Library compatibility was checked against official documentation and npm peer dependency metadata. The inherited Inngest/OpenTelemetry dependency tree emits peer warnings around OpenTelemetry API versions. Security updates pin Next.js 16.4.3, Zod 4.6.7, Sharp 0.35.5 and patched transitive parsers; Zod’s v3 compatibility export keeps Inngest compatible. Re-run dependency auditing before each production release.
-
-## Configure authentication and durable storage
-
-1. Create a Supabase project. Run `supabase/migrations/202610300001_atlas.sql` once in the SQL editor or through your Supabase migration pipeline. It creates no demo records.
-2. Copy `.env.example` to `.env.local` for local development. Fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Both are intended for the browser; neither is a privileged key.
-3. In Supabase Auth, enable email/password. Configure your Site URL and allow exact application callback URLs, including `http://127.0.0.1:5173/auth/callback` and your deployed origin. Password recovery uses `/auth/callback?type=recovery` and then `/reset-password`. Keep email confirmation enabled and configure production SMTP.
-4. Optionally configure GitHub OAuth in Supabase. The GitHub OAuth app callback points to Supabase’s provided auth callback URL; Supabase redirects back to the application. This grants sign-in to Atlas, not Copilot analytics permissions.
-5. Generate fresh database types from **your deployed project** using Supabase CLI before expanding backend queries. Live-generated types are not included because no Supabase project was supplied. The import and provider boundaries already use runtime schemas.
-6. For key storage, sync and account deletion, set server-only `SUPABASE_SERVICE_ROLE_KEY`. Generate `INTEGRATION_ENCRYPTION_KEY` as 32 random bytes encoded in 64 hexadecimal characters. Keep the encryption key stable while encrypted credentials exist; rotation needs a migration/re-encryption plan.
-7. Configure `INNGEST_EVENT_KEY` and `INNGEST_SIGNING_KEY`, then register `/api/inngest` with Inngest. Production handlers fail closed without a signing key. The API endpoint must be reachable by Inngest: a Sites owner-private access gate can block external callbacks. For a live sync deployment, use a properly reachable, signature-verified endpoint (for example stock Next.js on Vercel), or explicitly configure a supported hosting access solution. No bypass token is created by this project.
-8. On hosted Sites, set runtime secrets through Sites environment-variable controls; local `.env.local` is not uploaded. Public `NEXT_PUBLIC_*` values are inlined at build time: build with the same public configuration used by the hosted runtime. Never prefix a secret with `NEXT_PUBLIC_`.
-
-| Variable | Exposure | Required for |
-|---|---|---|
-| NEXT_PUBLIC_SUPABASE_URL | Public | Account auth and database |
-| NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY | Public | Account auth and database |
-| SUPABASE_SERVICE_ROLE_KEY | Server only | Encrypted keys, sync, account deletion |
-| INTEGRATION_ENCRYPTION_KEY | Server only | Encrypt/decrypt provider credentials |
-| INNGEST_EVENT_KEY | Server only | Queue and schedule sync |
-| INNGEST_SIGNING_KEY | Server only | Verify durable workflow requests |
-| NEXT_PUBLIC_APP_URL | Public, optional | Deployment tooling/documentation origin |
-
-## Integrations and honest limits
-
-**Implemented import adapters:** normalized CSV/JSON, selected ChatGPT conversations.json and Claude conversation JSON formats. ZIP archives and arbitrary provider report shapes are rejected; extract the supported JSON yourself or transform a report to the normalized schema. A conversation export contributes one record per conversation, not a fabricated count of every message.
-
-**Implemented official API adapter code:** OpenAI organization completion usage and Anthropic’s documented legacy organization messages usage report. The connection check requires genuine eligible admin access. API snapshots record bucketed token/request metadata separately from the event ledger. Anthropic input tokens in this version are **uncached** input tokens; cache reads/writes are not included. Provider cost APIs and subscription billing are not implemented. Cost fields remain null unless explicitly imported. No live provider account was available to verify these adapters end to end.
-
-**Unavailable live adapters:** consumer chat-history OAuth, Gemini project/IAM reporting, Cursor Enterprise analytics, Copilot enterprise reports and Perplexity Analytics. Those require additional permissions, verified response fixtures or provider-specific implementation. See [integration matrix](docs/integration-matrix.md).
-
-Signed-in imports are saved server-side with repeated validation and per-user authorization. Anonymous imports stay separate from demo data. Same-provider/source IDs deduplicate; cross-source reconciliation is not implemented, so importing the same underlying activity from different formats can double-count it. Source labels remain visible.
-
-Imports are limited to 5 MB and 2,000 rows per operation. Account overview loads at most 20,000 recent events and 2,000 snapshots, with a visible truncation warning; explorer search/pagination currently operates on that bounded loaded set. Before large-scale deployment, move period aggregation and search/pagination fully into SQL, and add a durable large-file ingestion path. Existing timestamp/provider/category indexes support that extension. Model versions in demo fixtures are illustrative examples, not claims about the latest provider offerings.
-
-## Validation
-
-```bash
-npm run typecheck
-npm test
-npm run test:e2e
-npm run build
-npm run build:next
+```csv
+provider,timestamp,model,category,tokens,cost,external_id
+chatgpt,2026-10-29T10:00:00Z,gpt-4.1,Writing,1250,0.012,example-1
+claude,2026-10-29T11:30:00Z,claude-sonnet-4-5,Coding,2400,0.024,example-2
+deepseek,2026-10-30T09:00:00Z,deepseek-chat,Research,,,example-3
 ```
 
-Verified on 30 October 2026:
+Supported `provider` values: `chatgpt` · `claude` · `gemini` · `cursor` · `copilot` · `perplexity` · `deepseek` · `kimi` · `grok` · `mistral` · `meta` · `qwen` · `other`.
 
-- **37 unit/integration/security tests passed.** Includes parsing and format errors, missing/zero data, local classification, metadata minimization, stable deduplication, formula-safe CSV, analytics, mocked official adapter requests and 429 handling, encryption/tampering, same-origin checks and streamed body bounds.
-- **Executable PostgreSQL migration and two-tenant tests passed** using PGlite: RLS read isolation, forged owner rejection, update/delete exclusion, composite foreign keys, secret/RPC permission denial, correction history, atomic rate limits and tenant-limited purge.
-- **18 Playwright checks passed** across desktop Chromium and mobile Chromium emulation: navigation, all app screens, provider scopes, filters, pagination, corrections, validation, demo/local separation, persistent imports, exports, deletion, onboarding, route protection, responsive overflow checks and reduced motion. Tests wait for network readiness to avoid interacting with pre-hydration server markup. Standard document links avoid a production-only client prefetch defect in the Sites compatibility runtime and re-evaluate account/mode boundaries on each page.
-- Production dependency audit (`npm audit --omit=dev`): **0 known advisories** after patching the inherited dependency pins.
-- TypeScript strict check passed. Both Sites/Vinext and stock Next.js production builds passed.
-- Desktop/mobile screenshots inspected; no browser page errors in screenshot runs. Artifacts are generated locally under ignored `outputs/`.
+Imports are validated against a schema, deduplicated by source ID, and capped at 5 MB / 2,000 rows per upload.
 
-Not yet verified: live Supabase email delivery/OAuth/recovery, hosted two-account sessions, actual provider credential permissions, signed Inngest delivery, real mobile GPU performance, Safari/Firefox behavior, Core Web Vitals on a real deployment, backup/restore and a production security audit. No compliance certification or guaranteed performance score is claimed.
+<br/>
 
-## Research and architecture
+## 🧠 How it works
 
-The required references were accessed: [Refero Styles](https://styles.refero.design/), its DESIGN.md examples, [Godly](https://godly.design/) and its Agentwork case page, and [MotionSites](https://motionsites.ai/) plus its 3D gallery. Research access was text/link-based; inaccessible or sparse materials are explicitly documented. Competitor research covered RescueTime, DX, Langfuse and official provider dashboards.
+```mermaid
+flowchart LR
+    subgraph Sources
+        A[ChatGPT / Claude exports]
+        B[CSV / JSON imports]
+        C[OpenAI & Anthropic<br/>admin usage APIs]
+    end
+    A --> V{Zod validation<br/>+ metadata only}
+    B --> V
+    C --> I[Inngest durable sync<br/>+ daily sweep]
+    I --> S[(API snapshots)]
+    V --> L[(Activity ledger)]
+    subgraph Supabase
+        L
+        S
+        K[(AES-GCM encrypted<br/>credentials)]
+    end
+    L --> D[Dashboard<br/>Overview · Insights · Explorer]
+    S --> D
+    D --> F[AI Fingerprint<br/>+ JSON export]
+```
 
-- [Product research](docs/research.md)
-- [Integration matrix](docs/integration-matrix.md)
-- [Design references and decisions](docs/design-research.md)
-- [Architecture](docs/architecture.md)
-- [Threat model and security](docs/security.md)
-- [Roadmap and deployment-dependent work](docs/roadmap.md)
+- **Frontend:** Next.js App Router, React 19, Tailwind CSS 4, Motion, ECharts and TanStack Table.
+- **The universe:** React Three Fiber with custom GLSL. One `ShaderMaterial` animates about 26k points (11k on phones) with simplex-noise breathing, cursor repulsion, a scroll-driven vortex and a sphere-to-galaxy morph. Logo chips are projected from 3D each frame. Lenis provides the smooth scrolling.
+- **Backend:** Supabase Auth and PostgreSQL with tenant row-level security, WebCrypto AES-GCM for provider keys, and Inngest for durable syncing.
+- **Fallbacks:** the WebGL scene pauses when off-screen and drops to a static dotted sphere when the browser has reduced motion turned on or no WebGL 2.
 
-This is a tested product foundation with a functional demo/local experience and deployable service implementation. It should not be represented as a fully audited, credential-configured production SaaS until the deployment-dependent acceptance work above has been completed.
+<details>
+<summary><b>Everything that's built</b></summary>
+
+<br/>
+
+- Original atlas logo, wordmark and favicon, self-hosted DM Sans / DM Mono, and a black-and-white design system.
+- Landing narrative: particle universe, provider gallery, interactive dashboard preview, fingerprint, privacy, FAQ and final call to action.
+- Email sign-up and sign-in, GitHub OAuth, PKCE callback, email recovery, password reset, server-protected account pages, session-refresh proxy and sign-out, all with Supabase Auth. Without configuration, the UI says accounts are unavailable.
+- Four-step onboarding with provider choices, connection methods and consent to local classification.
+- Overview with period and custom-range filters, previous-period comparison, provider ranking, category distribution, trends, recent activity and separately labelled API snapshots.
+- Applications with real status, import methods, verified OpenAI/Anthropic organization credential workflows, encrypted key storage, queue/retry and disconnect.
+- Activity explorer with search, date/provider/model/category filters, sorting, pagination, metadata details and correction history.
+- Insights, AI Fingerprint and aggregate JSON export, a provider/category network, and cost-coverage and spending views.
+- Profile, classification preference, data export, purging of activity and connections, session controls and account deletion.
+- ChatGPT and Claude export adapters, stable IDs and deduplication. Prompts and conversation bodies are never stored.
+- PostgreSQL migrations with tenant RLS, ownership constraints, atomic rate limits and inaccessible integration secrets. Inngest durable sync plus a daily 03:00 UTC sweep.
+
+</details>
+
+<br/>
+
+## ⚙️ Configuration
+
+Only needed for real accounts, server-side storage and API syncing.
+
+<details>
+<summary><b>Set up Supabase, encryption and Inngest</b></summary>
+
+<br/>
+
+1. Create a Supabase project and run every file in `supabase/migrations/` in order (SQL editor or your migration pipeline). They create no demo records.
+2. Copy `.env.example` to `.env.local` and fill in `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Both are browser-safe.
+3. In Supabase Auth, enable email/password. Set your Site URL and allow the exact callback URLs, including `http://127.0.0.1:5173/auth/callback` and your deployed origin. Password recovery uses `/auth/callback?type=recovery`, then `/reset-password`. Keep email confirmation on and configure production SMTP.
+4. Optionally enable GitHub OAuth in Supabase. The GitHub OAuth app's callback points to Supabase's auth callback, which then redirects back to Atlas. This only signs users in; it grants no Copilot analytics access.
+5. Generate fresh database types from **your** deployed project with the Supabase CLI before you expand backend queries.
+6. For key storage, syncing and account deletion, set the server-only `SUPABASE_SERVICE_ROLE_KEY`. Generate `INTEGRATION_ENCRYPTION_KEY` as 32 random bytes in 64 hex characters, and keep it stable while encrypted credentials exist.
+7. Set `INNGEST_EVENT_KEY` and `INNGEST_SIGNING_KEY`, then register `/api/inngest` with Inngest. Production handlers fail closed without a signing key, and the endpoint must be reachable from Inngest.
+8. Never prefix a secret with `NEXT_PUBLIC_`. Public values are inlined at build time, so build with the same public configuration you deploy.
+
+| Variable | Exposure | Needed for |
+|:--|:--|:--|
+| `NEXT_PUBLIC_SUPABASE_URL` | Public | Accounts and database |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Public | Accounts and database |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Encrypted keys, sync, account deletion |
+| `INTEGRATION_ENCRYPTION_KEY` | Server only | Encrypting provider credentials |
+| `INNGEST_EVENT_KEY` | Server only | Queuing and scheduling sync |
+| `INNGEST_SIGNING_KEY` | Server only | Verifying workflow requests |
+| `NEXT_PUBLIC_APP_URL` | Public, optional | Deployment tooling origin |
+
+</details>
+
+<details>
+<summary><b>Integrations and honest limits</b></summary>
+
+<br/>
+
+- **Import adapters:** normalized CSV/JSON, plus selected ChatGPT `conversations.json` and Claude conversation JSON formats. ZIP archives and arbitrary report shapes are rejected. A conversation export adds one record per conversation, not a made-up count of messages.
+- **Official API adapters:** OpenAI organization completion usage and Anthropic's documented organization messages usage report. They need genuine admin access and record bucketed token/request metadata separately from the activity ledger. Anthropic input tokens are *uncached* input tokens. Provider cost APIs and subscription billing are not implemented; cost stays empty unless you import it. These adapters have not been verified end to end against a live provider account.
+- **Not available yet:** consumer chat-history OAuth, Gemini project/IAM reporting, Cursor Enterprise analytics, Copilot enterprise reports and Perplexity Analytics. See the [integration matrix](docs/integration-matrix.md).
+- **Scale limits:** the account overview loads at most 20,000 recent events and 2,000 snapshots, with a visible warning. Importing the same activity from two different formats can double-count it, because cross-source reconciliation is not implemented.
+
+</details>
+
+<br/>
+
+## 🧪 Testing
+
+```bash
+npm run typecheck   # strict TypeScript
+npm test            # 37 unit, integration and security tests (Vitest + PGlite)
+npm run test:e2e    # Playwright, desktop and mobile Chromium
+npm run build       # production build
+```
+
+The suites cover parsing errors, metadata minimization, deduplication, formula-safe CSV, analytics, mocked provider requests and rate limits, encryption tampering, same-origin checks, body-size limits, and two-tenant row-level-security isolation on a real PostgreSQL engine.
+
+> [!NOTE]
+> Not yet verified: live Supabase email/OAuth delivery, real provider credential permissions, signed Inngest delivery, real-device mobile GPU performance, Safari/Firefox, and a production security audit. Treat this as a tested foundation, not an audited SaaS.
+
+<br/>
+
+## 📚 Docs
+
+[Product research](docs/research.md) · [Integration matrix](docs/integration-matrix.md) · [Design decisions](docs/design-research.md) · [Architecture](docs/architecture.md) · [Threat model & security](docs/security.md) · [Roadmap](docs/roadmap.md)
+
+## 🗺️ Roadmap
+
+- [x] Particle-universe landing page with scroll storytelling
+- [x] Twelve AI tools with real brand marks
+- [x] ChatGPT and Claude export imports
+- [x] OpenAI and Anthropic organization usage sync
+- [ ] Server-side aggregation and search for very large histories
+- [ ] Cross-source deduplication
+- [ ] Live connectors for Gemini, Cursor, Copilot and Perplexity analytics
+
+## 🤝 Contributing
+
+Issues and pull requests are welcome. Please run `npm run typecheck` and `npm test` before opening a PR, and keep the privacy rule intact: **metadata in, conversation content never**.
+
+## 📄 License
+
+Code is released under the [MIT License](LICENSE).
+
+AI product names and logos are trademarks of their respective owners and are used only to identify those products. Brand marks come from [Lobe Icons](https://github.com/lobehub/lobe-icons) (MIT). DM Sans and DM Mono are under the SIL Open Font License (see `public/fonts/`).
+
+<br/>
+
+<div align="center">
+
+<sub>Made with curiosity by <a href="https://github.com/satiricalguru">Jatin Pandey</a> · If Atlas gave you a clearer picture, a ⭐ helps others find it.</sub>
+
+<br/>
+
+[↑ Back to top](#)
+
+</div>
