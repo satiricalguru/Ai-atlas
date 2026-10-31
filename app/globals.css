@@ -101,3 +101,31 @@ html.lenis,html.lenis body{height:auto}html.lenis{scroll-behavior:auto}.lenis.le
 @media(max-width:600px){.provider-track .provider-rail{width:auto;gap:44px}}
 .sat-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .sat-layer .sat-chip{position:absolute;left:0;top:0;opacity:0}
+/* Particle globe stage */
+.globe-stage{position:relative}
+.globe-sticky{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;z-index:0;pointer-events:none;overflow:hidden}
+.globe-sticky:after{content:'';position:absolute;inset:auto 0 0;height:22vh;background:linear-gradient(transparent,#050505);pointer-events:none}
+.globe-sticky .universe{position:absolute;inset:0;width:100%;height:100%}
+.globe-sticky .universe:before{display:none}
+.globe-sticky .static-globe{position:absolute;inset:auto;left:50%;top:58%;width:min(46vh,72vw);height:auto;transform:translate(-50%,-50%);opacity:.9}
+.globe-stage .hero{height:100vh;height:100svh;min-height:720px;z-index:2;overflow:visible}
+.globe-chapters{position:relative;z-index:2}
+.globe-chapter{height:100vh;height:100svh;display:flex;align-items:center}
+.globe-chapter.is-right{justify-content:flex-end}
+.globe-chapter-card{position:relative;max-width:430px;text-shadow:0 0 40px #050505,0 0 12px #050505}
+.globe-chapter-num{position:absolute;top:-96px;left:-8px;font-size:150px;font-weight:300;line-height:1;letter-spacing:-9px;color:transparent;-webkit-text-stroke:1px #ffffff24;text-shadow:none;pointer-events:none}
+.globe-chapter-card .eyebrow{color:#9c9c9c}
+.globe-chapter-card h2{margin-top:22px;font-size:54px;letter-spacing:-2.6px;line-height:1.08}
+.globe-chapter-card p{margin-top:22px;max-width:350px;font-size:14px;line-height:1.85;color:#8f8f8f}
+.globe-tail{height:50vh}
+.stage-rail{position:absolute;right:max(32px,calc((100vw - 1440px) / 2));top:50%;transform:translateY(-50%);display:flex;gap:16px;height:220px;z-index:3}
+.stage-rail-track{position:relative;width:1px;background:#ffffff1c}.stage-rail-track span{position:absolute;inset:0;background:#fff;transform-origin:50% 0}
+.stage-rail-meta{display:flex;flex-direction:column;justify-content:space-between;writing-mode:vertical-rl;transform:rotate(180deg);font:9px var(--font-mono);letter-spacing:1.8px;color:#8a8a8a;white-space:nowrap}
+.stage-rail-count{color:#eee}
+@media(max-width:800px){.globe-chapter-card h2{font-size:38px;letter-spacing:-1.6px}.globe-chapter-num{font-size:110px;top:-72px}.stage-rail{right:16px;height:160px}}
+@media(max-width:600px){.globe-stage .hero{min-height:780px}.globe-chapter{align-items:flex-end;padding-bottom:14vh}.globe-chapter.is-right{justify-content:flex-start}.globe-chapter-card h2{font-size:32px}.globe-chapter-card p{font-size:13px}.stage-rail{display:none}}
+@media(prefers-reduced-motion:reduce){.globe-sticky .static-globe{top:50%}}
+.globe-stage{--nav-h:94px}.globe-sticky{margin-top:calc(var(--nav-h) * -1);margin-bottom:calc(var(--nav-h) - 100vh);margin-bottom:calc(var(--nav-h) - 100svh)}
+@media(max-width:800px){.globe-stage{--nav-h:78px}}@media(max-width:600px){.globe-stage{--nav-h:77px}}
+.globe-stage+.ecosystem{position:relative;z-index:2;background:#050505;box-shadow:0 0 0 100vmax #050505;clip-path:inset(0 -100vmax)}
+.globe-sticky .universe>div:has(canvas),.globe-sticky .universe canvas{height:100%!important;top:0!important;bottom:0!important}
