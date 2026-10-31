@@ -51,12 +51,11 @@ You probably use three or four AI tools a week. Each one has its own history, it
 
 <a href="assets/demo.mp4"><img src="assets/hero.jpg" width="100%" alt="AI Atlas hero: 'Your entire AI universe. In perspective.' above a glowing particle sphere"></a>
 
-<sub>▶ <a href="assets/demo.mp4"><b>Watch the full 36-second walkthrough</b></a> (MP4): landing, globe sequence, provider gallery and dashboard.</sub>
+<sub>▶ The full 36-second walkthrough plays below: landing, globe sequence, provider gallery and dashboard.</sub>
 
 </div>
 
-<!-- To get an inline video player on GitHub: drag assets/demo.mp4 into any issue or PR comment,
-     copy the https://github.com/user-attachments/assets/... URL it gives you, and paste it on its own line here. -->
+https://github.com/user-attachments/assets/efd4acf5-ba0b-4ef3-a5e7-496c11170964
 
 ### The scroll story
 
