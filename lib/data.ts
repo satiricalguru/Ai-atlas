@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const providerIds = ['chatgpt', 'claude', 'gemini', 'cursor', 'copilot', 'perplexity', 'other'] as const;
+export const providerIds = ['chatgpt', 'claude', 'gemini', 'cursor', 'copilot', 'perplexity', 'deepseek', 'kimi', 'grok', 'mistral', 'meta', 'qwen', 'other'] as const;
 export type ProviderId = typeof providerIds[number];
 export const categories = ['Coding', 'Debugging', 'Research', 'Studying', 'Writing', 'Brainstorming', 'Content Creation', 'Data Analysis', 'Business Planning', 'General Assistance'] as const;
 export type Category = typeof categories[number];
@@ -11,6 +11,12 @@ export const providers: { id: ProviderId; name: string; company: string; color: 
   { id: 'cursor', name: 'Cursor', company: 'Anysphere', color: '#cecece', mark: '◈', description: 'Your AI-powered development environment.', method: 'CSV / JSON import', url: 'https://cursor.com' },
   { id: 'copilot', name: 'GitHub Copilot', company: 'GitHub', color: '#b5b5b5', mark: '⌘', description: 'A little extra intelligence in your editor.', method: 'CSV / JSON import', url: 'https://github.com/features/copilot' },
   { id: 'perplexity', name: 'Perplexity', company: 'Perplexity AI', color: '#bbbbbb', mark: '⌇', description: 'Follow your curiosity. Find the sources.', method: 'CSV / JSON import', url: 'https://perplexity.ai' },
+  { id: 'deepseek', name: 'DeepSeek', company: 'DeepSeek', color: '#4d6bfe', mark: '◐', description: 'Open-weight reasoning that goes deep.', method: 'CSV / JSON import', url: 'https://chat.deepseek.com' },
+  { id: 'kimi', name: 'Kimi', company: 'Moonshot AI', color: '#1783ff', mark: 'K', description: 'Long context for long thoughts.', method: 'CSV / JSON import', url: 'https://kimi.com' },
+  { id: 'grok', name: 'Grok', company: 'xAI', color: '#e5e5e5', mark: '⊘', description: 'Real-time answers with a point of view.', method: 'CSV / JSON import', url: 'https://grok.com' },
+  { id: 'mistral', name: 'Le Chat', company: 'Mistral AI', color: '#fa520f', mark: '▦', description: 'Fast, European, open at heart.', method: 'CSV / JSON import', url: 'https://chat.mistral.ai' },
+  { id: 'meta', name: 'Meta AI', company: 'Meta', color: '#0081fb', mark: '∞', description: 'An assistant across the apps you already use.', method: 'CSV / JSON import', url: 'https://meta.ai' },
+  { id: 'qwen', name: 'Qwen', company: 'Alibaba Cloud', color: '#615ced', mark: 'Q', description: 'Multilingual, multimodal, and open.', method: 'CSV / JSON import', url: 'https://chat.qwen.ai' },
   { id: 'other', name: 'Other tools', company: 'Your ecosystem', color: '#bebebe', mark: '+', description: 'Make room for the next tool in your workflow.', method: 'CSV / JSON import', url: '' },
 ];
 export const categoryColors = ['#f5f5f5','#999999','#666666','#cccccc','#818181','#dddddd','#ababab','#555555','#bbbbbb','#444444'];
@@ -50,7 +56,7 @@ export function makeDemo(): ActivityEvent[] {
   return events.sort((a,b)=>b.timestamp.localeCompare(a.timestamp));
 }
 export const demoEvents = makeDemo();
-export function getProvider(id: string) { return providers.find(p=>p.id===id) || providers[6]; }
+export function getProvider(id: string) { return providers.find(p=>p.id===id) || providers[providers.length-1]; }
 export function formatNumber(n: number) { return new Intl.NumberFormat('en-US').format(n); }
 export function money(n: number) { return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(n); }
 
