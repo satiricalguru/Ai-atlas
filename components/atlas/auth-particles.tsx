@@ -14,7 +14,7 @@ export function AuthParticles(){
   const draw=(now:number)=>{
    const dt=Math.min(.05,(now-last)/1000);last=now;if(!reduced)t+=dt;
    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-   const R=Math.max(w,h)*.62,cx=w*.62,cy=h*.42;const ry=t*.06,rx=-.35;const cY=Math.cos(ry),sY=Math.sin(ry),cX=Math.cos(rx),sX=Math.sin(rx);
+   const R=Math.min(w,h)*.3,cx=w*.5,cy=h*.3;const ry=t*.06,rx=-.35;const cY=Math.cos(ry),sY=Math.sin(ry),cX=Math.cos(rx),sX=Math.sin(rx);
    for(const q of pts){
     const x1=q.x*cY+q.z*sY,z1=-q.x*sY+q.z*cY;const y2=q.y*cX-z1*sX,z2=q.y*sX+z1*cX;
     const breathe=1+Math.sin(t*.8+q.p)*.012;const persp=1.6/(2.4-z2);
